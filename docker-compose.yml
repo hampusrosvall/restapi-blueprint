@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  flask:
+    build: ./flask 
+    container_name: flask 
+    expose: 
+        - 5000
+
+  reverse_proxy: 
+    build: ./nginx 
+    container_name: reverse_proxy
+    ports: 
+        - '80:80'
+    depends_on: 
+        - flask 
